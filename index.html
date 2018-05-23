@@ -1,0 +1,40 @@
+﻿<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- marked.js 相対パス指定 -->
+  <script src="./marked.js/marked.min.js"></script>
+
+  <!-- marked.js CDN指定 -->
+  <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>-->
+
+<script src="index.md"></script>
+
+<script>
+
+(function () {
+
+  var timer;
+  window.addEventListener("DOMContentLoaded",function(){
+    try {
+      main();
+    } catch(e) {
+      document.body.innerHTML = 'Error';
+    }
+    timer = setInterval('location.reload()',1000);
+  },false);
+
+  var replaceAll = function(str, before, after) {
+    return str.split(before).join(after);
+  };
+
+  var main = function () {
+    document.body.innerHTML =
+      marked(replaceAll(doc, '\\`', '`'));
+  };
+
+}());
+
+</script>
+</head><body>
+</body></html>
